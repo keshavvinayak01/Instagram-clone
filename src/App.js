@@ -1,20 +1,20 @@
 import React from 'react';
-import MainComponent from './Components/MainComponent';
 import SinglePhotoComponent from './Components/SinglePhotoComponent';
 import PhotoGridComponent from './Components/PhotoGridComponent';
 import {Router, Route, Switch} from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store, { history } from './redux/store';
+import reduxApp from './redux/App';
 
 const router = (
 	<Provider store={store} >
 		<Router history={history}>
-			<MainComponent>
+			<reduxApp>
 				<Switch>
 					<Route exact path="/" component={PhotoGridComponent} />
 					<Route path="/view/:postId" component={SinglePhotoComponent} />
 				</Switch>
-			</MainComponent>
+			</reduxApp>
 		</Router>
 	</Provider>
 )
