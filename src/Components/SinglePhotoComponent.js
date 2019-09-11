@@ -11,7 +11,7 @@ class SinglePhotoComponent extends Component {
             <div>
                 <div class='single-photo'>
                     <PhotoComponent i = {i} post={post} {...this.props} />
-                    <CommentComponent postComments={this.props.comments[postId] || [] {...this.props}/>
+                    <CommentComponent postComments={this.props.comments[postId] || []} {...this.props}/>
                 </div>                
             </div>
         )
