@@ -1,5 +1,5 @@
 import { createStore } from 'redux';
-import { syncHistoryWithStore } from 'react-router';
+import { syncHistoryWithStore } from 'react-router-index';
 import browserHistory from '../history'; 
 import rootReducer from './reducers/index';
 
