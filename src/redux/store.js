@@ -1,17 +1,23 @@
-import { createStore } from 'redux';
-import { syncHistoryWithStore } from 'react-router-index';
+import { createStore, applyMiddleware } from 'redux';
+import { syncHistoryWithStore } from 'react-router-redux';
 import browserHistory from '../history'; 
-import rootReducer from './reducers/index';
 import comments from '../client/data/comments';
-import posts from '../client/data/posts';
+import posts from '../client/data/posts'
+import thunk from 'redux-thunk';
+import logger from 'redux-logger'
+import rootReducer from './reducers/index';
 
-const defaultState = {
-    posts,
-    comments
+
+export const ConfigureStore = () => {
+    const store = createStore(
+        rootReducer, 
+        {
+            posts : posts,
+            comments : comments
+        },
+        applyMiddleware(thunk, logger)
+    );
+    return store;
 }
 
-const store = createStore(rootReducer, defaultState);
-
-export const history = syncHistoryWithStore(browserHistory, store);
-
-export default store;
+export const history = syncHistoryWithStore(browserHistory, ConfigureStore());

@@ -1,29 +1,23 @@
-import React from 'react';
-import SinglePhotoComponent from './Components/SinglePhotoComponent';
-import PhotoGridComponent from './Components/PhotoGridComponent';
-import {Router, Route, Switch} from 'react-router-dom';
+import React, { Component } from 'react';
+import {Router} from 'react-router-dom';
 import { Provider } from 'react-redux';
-import store, { history } from './redux/store';
-import reduxApp from './redux/App';
+import { history, ConfigureStore } from './redux/store';
+import MainComponent from './Components/MainComponent'
 
-const router = (
-	<Provider store={store} >
-		<Router history={history}>
-			<reduxApp>
-				<Switch>
-					<Route exact path="/" component={PhotoGridComponent} />
-					<Route path="/view/:postId" component={SinglePhotoComponent} />
-				</Switch>
-			</reduxApp>
-		</Router>
-	</Provider>
-)
-function App() {
-	return (
-		<div className="App">
-			{router}
-		</div>
-	);
+const store = ConfigureStore();
+class App extends Component {
+	render(){
+		return (
+			<div className="App">
+				<Provider store={store}>
+					<Router history={history}>
+						<MainComponent />
+					</Router>
+				</Provider>
+			</div>
+		);
+	}
+	
 }
 
 export default App;

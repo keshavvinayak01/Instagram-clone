@@ -4,14 +4,14 @@ import CommentComponent from './CommentComponent'
 class SinglePhotoComponent extends Component {
     render() {
         // fetch index to get the post
-        const { postId } = this.props.params.postId;
-        const i = this.props.posts.findIndex((post) => post.code === postId);
+        const i = this.props.posts.findIndex((post) => post.code === this.props.postId);
         const post = this.props.posts[i];
         return (
             <div>
-                <div class='single-photo'>
+                <div className='single-photo'>
                     <PhotoComponent i = {i} post={post} {...this.props} />
-                    <CommentComponent postComments={this.props.comments[postId] || []} {...this.props}/>
+                    <CommentComponent postComments={this.props.comments[this.props.postId] || []} 
+                    {...this.props} postId = {this.props.postId}/>
                 </div>                
             </div>
         )

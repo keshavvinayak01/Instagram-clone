@@ -3,9 +3,10 @@ import PhotoComponent from './PhotoComponent'
 
 class PhotoGridComponent extends Component {
     render() {
+        console.log(this.props)
         return (
             <div>
-                <div class='photo-grid'>
+                <div className='photo-grid'>
                 {this.props.posts.map((post, i) => <PhotoComponent {...this.props} key={i} i={i} post={post} /> )}                
                 </div>
             </div>

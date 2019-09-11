@@ -1,10 +1,11 @@
 function modifyComments(state = [], action){
     switch(action.type){
         case 'ADD_COMMENT' : 
-        return [...state, {
-            user : action.author,
-            text : action.comment
-        }];
+        console.log(action.author, action.comment)
+            return [...state, {
+                user : action.author,
+                text : action.comment
+            }];
         case 'REMOVE_COMMENT':
             return [
                 ...state.slice(0, action.i),
